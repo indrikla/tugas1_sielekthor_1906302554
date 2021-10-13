@@ -9,6 +9,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -21,25 +22,28 @@ public class MemberModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id")
+    private Long idMember;
 
     @NotNull
-    @Size(max=30)
-    @Column(nullable = false)
+    @Size(max=255)
+    @Column(name = "nama_member", nullable = false)
     private String namaMember;
 
     @NotNull
-    @Size(max=30)
-    @Column(nullable = false)
-    private String jenisKelamin;
+    @Column(name = "jenis_kelamin", nullable = false)
+    private Integer jenisKelamin;
 
     @NotNull
-    @Column(nullable = false)
-    @DateTimeFormat(pattern = "dd/mm/yy")
+    @Column(name = "tanggal_lahir", nullable = false)
+    @DateTimeFormat(pattern = "YYYY-MM-dd")
     private LocalTime tanggalLahir;
 
     @NotNull
-    @Column(nullable = false)
-    @DateTimeFormat(pattern = "yy-mm-dd")
+    @Column(name = "tanggal_pendaftaran", nullable = false)
+    @DateTimeFormat(pattern = "YYYY-MM-dd")
     private LocalTime tanggalPendaftaran;
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<PembelianModel> listPembelian;
 }

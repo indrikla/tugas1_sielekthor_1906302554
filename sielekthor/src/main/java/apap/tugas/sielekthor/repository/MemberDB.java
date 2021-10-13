@@ -8,6 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface MemberDB extends JpaRepository<MemberModel, Long> {
-//    Optional<MemberModel> findByNoBioskop(Long noBioskop);
-//    List<MemberModel> findAllByOrderByNamaBioskop();
+//    Optional<MemberModel> findByIdMember(Long id);
+//    List<MemberModel> findAllMember();
 }

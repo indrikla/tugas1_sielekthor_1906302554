@@ -3,12 +3,15 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -21,28 +24,34 @@ public class PembelianModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id")
+    private Long idPembelian;
 
     @NotNull
-    @Size(max=13)
-    @Column(nullable = false)
+    @Size(max=255)
+    @Column(name = "no_invoice", nullable = false)
     private String noInvoice;
 
     @NotNull
-    @Column(nullable = false)
+    @Column(name = "is_cash", nullable = false)
     private boolean isCash;
 
     @NotNull
-    @Size(max=30)
-    @Column(nullable = false)
+    @Size(max=255)
+    @Column(name = "nama_admin", nullable = false)
     private String namaAdmin;
 
     @NotNull
-    @Column(nullable = false)
+    @Column(name = "total", nullable = false)
     private Integer total;
 
     @NotNull
-    @Column(nullable = false)
-    @DateTimeFormat(pattern = "dd:mm")
+    @Column(name = "tanggal_pembelian", nullable = false)
+    @DateTimeFormat(pattern = "YYYY-MM-dd")
     private LocalTime tanggalPembelian;
+
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "id_member", referencedColumnName = "id", nullable = false)
+    private MemberModel member;
 }

@@ -8,6 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface TipeDB extends JpaRepository<TipeModel, Long> {
-//    Optional<TipeModel> findByNoBioskop(Long noBioskop);
-//    List<TipeModel> findAllByOrderByNamaBioskop();
+//    Optional<TipeModel> findByIdTipe(Long id);
+//    List<TipeModel> findAllTipe();
 }

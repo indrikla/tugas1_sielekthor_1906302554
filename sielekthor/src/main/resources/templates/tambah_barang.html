@@ -9,48 +9,99 @@
 </head>
 
 <body>
-<nav th:replace="fragments/fragment :: navbar('Home')"></nav>
-<div class="d-flex justify-content-center">
+    <nav th:replace="fragments/fragment :: navbar('Home')"></nav>
+    <div class="container">
+        <div class="card m-4 p-4">
+            <div class="card-body">
+                <div class="justify-content-center">
+                    <h2 style="text-align: center">Form Tambah Barang</h2>
+                    <div class=col-lg-6>
+                        <form>
+                            <label>Nama Barang: </label> <br>
+                            <input required class="form-control" type="text" id="namaBForm" name="namaBForm"/>
+                            <br><br>
 
-</div>
+                            <label>Kode Barang: </label>
+                            <input required class="form-control" type="text" id="kodeBForm" name="kodeBForm"/>
+                            <br><br>
+
+                            <label>Merk Barang: </label>
+                            <input required class="form-control" type="text" id="merkBForm" name="merkBForm" />
+                            <br><br>
+
+                            <label>Stok Barang: </label>
+                            <input required class="form-control" type="text" id="stokBForm" name="stokBForm" />
+                            <br><br>
+
+                            <label>Garansi Barang: </label>
+                            <input required class="form-control" type="text" id="garansiBForm" name="garansiBForm" />
+                            <br><br>
+
+                            <label>Deskripsi Barang: </label>
+                            <input required class="form-control" type="text" id="deskripsiBForm" name="deskripsiBForm" />
+                            <br><br>
+
+                            <label>Tipe Barang: </label>
+                            <select id="tipeBForm" name="tipeBForm" required>
+                                <option disabled selected value> -- select an option -- </option>
+                                <!--            {% for supplier in supplierList %}-->
+                                <!--            <option value={{supplier.username}}>{{supplier.username}}</option>-->
+                                <!--            {% endfor %}-->
+                            </select>
+                            <br><br>
+
+                            <label>Harga: </label>
+                            <input type="text" id="hargaBForm" name="hargaBForm"/>
+                            <br><br>
+                            <div>
+                                <button class="btn btn-primary-outline" type="submit" name="save">Batal</button>
+                                <button class="btn btn-warning" type="submit" name="save">Simpan</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
-
 </html>
 
-<div class="container col-lg-12">
-    <h1 class="display-4">Tambah Barang</h1>
-    <hr class="my-4">
-    <div class=col-lg-6>
+<!--<div class="container">-->
+<!--    <div class="card m-4 p-4">-->
+<!--        <div class="card-body">-->
+<!--            <div class="justify-content-center">-->
+<!--                <h2>Tambah Bioskop</h2>-->
+<!--                <br>-->
+<!--                <form th:action="@{/bioskop/add}" th:object="${bioskop}" method="POST">-->
+<!--                    <label>Nama Barang: </label> <br>-->
+<!--                    <input required class="form-control" type="text" id="namaBForm" name="namaBForm"/>-->
+<!--                    <br><br>-->
 
-        {% csrf_token %}
-        <label>Nama Barang: </label>
-        <input type="text" id="namaBForm" name="namaBForm">
+<!--                    Alamat Bioskop: <br>-->
+<!--                    <input required class="form-control" th:value="*{alamatBioskop}" type="text"-->
+<!--                           name="alamatBioskop" />-->
+<!--                    <br><br>-->
 
-        <label>Kode Barang: </label>
-        <input type="text" id="kodeBForm" name="kodeBForm">
+<!--                    Jumlah Studio : <br>-->
+<!--                    <input required min="0" class="form-control" th:value="*{jumlahStudio}" type="number"-->
+<!--                           name="jumlahStudio" />-->
+<!--                    <br><br>-->
 
-        <label>Merk Barang: </label>
-        <input type="text" id="merkBForm" name="merkBForm" >
+<!--                    Waktu Buka : <br>-->
+<!--                    <input required class="form-control" th:value="*{waktuBuka}" type="time" name="waktuBuka" />-->
+<!--                    <br><br>-->
 
-        <label>Stok Barang: </label>
-        <input type="text" id="stokBForm" name="stokBForm" >
+<!--                    Waktu Tutup : <br>-->
+<!--                    <input required class="form-control" th:value="*{waktuTutup}" type="time" name="waktuTutup" />-->
+<!--                    <br><br>-->
 
-        <label>Garansi Barang: </label>
-        <input type="text" id="garansiBForm" name="garansiBForm" >
 
-        <label>Deskripsi Barang: </label>
-        <input type="text" id="deskripsiBForm" name="deskripsiBForm" >
 
-        <label>Tipe Barang: </label>
-        <select id="tipeBForm" name="tipeBForm" required>
-            <option disabled selected value> -- select an option -- </option>
-<!--            {% for supplier in supplierList %}-->
-<!--            <option value={{supplier.username}}>{{supplier.username}}</option>-->
-<!--            {% endfor %}-->
-        </select>
-
-        <label>Harga: </label>
-        <input type="text" id="hargaBForm" name="hargaBForm">
-
-    </div>
-</div>
+<!--                    <button class="btn btn-primary" type="submit" name="save">Submit</button>-->
+<!--                    <a class="btn btn-primary" href="/">Home</a>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title> Detail Pembelian </title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+    <nav th:replace="fragments/fragment :: navbar('Home')"></nav>
+    <div class="d-flex justify-content-center">
+        <div class="container col-lg-12">
+            <h1 class="display-4">Detail Pembelian</h1>
+            <hr class="my-4">
+            <div class=col-lg-6>
+
+                <label>Nama Barang: </label>
+
+                <label>Kode Barang: </label>
+
+                <label>Merk Barang: </label>
+
+                <label>Stok Barang: </label>
+
+                <label>Garansi Barang: </label>
+
+                <label>Deskripsi Barang: </label>
+
+                <label>Tipe Barang: </label>
+
+                <label>Harga: </label>
+                <button th:href="@{/}">Kembali</button>
+            </div>
+        </div>
+        <h1 class="display-4">Detail Pembelian</h1>
+        <div>
+            <table>
+                <tr>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>Merk</th>
+                    <th>Tipe</th>
+                    <th>Tanggal Garansi</th>
+                    <th>Harga</th>
+                    <th>Kty</th>
+                    <th>Total</th>
+                </tr>
+                <tr>
+                    <td>a</td>
+                    <td>a</td>
+                    <td>a</td>
+                    <td>a</td>
+                    <td>a</td>
+                    <td>a</td>
+                    <td>a</td>
+                    <td>a</td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <button th:href="@{/}">Kembali</button>
+        </div>
+    </div>
+</body>
+
+</html>
+

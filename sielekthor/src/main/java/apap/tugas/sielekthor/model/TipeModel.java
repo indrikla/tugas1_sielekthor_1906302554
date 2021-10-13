@@ -19,15 +19,19 @@ public class TipeModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id")
+    private Long idTipe;
 
     @NotNull
-    @Size(max=30)
-    @Column(nullable = false)
+    @Size(max=255)
+    @Column(name = "nama", nullable = false)
     private String namaTipe;
 
     @NotNull
-    @Size(max=100)
-    @Column(nullable = false)
+    @Size(max=255)
+    @Column(name = "deskripsiTipe", nullable = false)
     private String deskripsiTipe;
+
+    @OneToMany(mappedBy = "tipe", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<BarangModel> listBarang;
 }

@@ -9,5 +9,20 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
+@Controller
 public class PembelianController {
+
+    @GetMapping("/pembelian")
+    public String viewPembelian(Model model) {
+        return "daftar_pembelian";
+    }
+
+    @GetMapping("/pembelian/tambah")
+    public String formTambahPembelian(Model model) {
+        return "form_tambah_pembelian";
+    }
+    @PostMapping("/pembelian/tambah")
+    public String submitTambahPembelian(Model model) {
+        return "form_tambah_pembelian";
+    }
 }

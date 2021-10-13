@@ -8,7 +8,7 @@ import java.util.Optional;
 
 @Repository
 public interface PembelianDB extends JpaRepository<PembelianModel, Long> {
-//    Optional<PembelianModel> findByNoBioskop(Long noBioskop);
-//    List<PembelianModel> findAllByOrderByNamaBioskop();
+//    Optional<PembelianModel> findByIdPembelian(Long id);
+//    List<PembelianModel> findAllPembelian();
 }
 
