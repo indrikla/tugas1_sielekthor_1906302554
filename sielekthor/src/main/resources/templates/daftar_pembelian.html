@@ -25,16 +25,22 @@
                 <th>Aksi</th>
             </thead>
             <tbody>
-                <tr>
-                    <td>a</td>
-                    <td>a</td>
-                    <td>a</td>
-                    <td>a</td>
-                    <td>a</td>
-                    <td>a</td>
+                <tr th:each="pembelian, iterationStatus : ${listPembelian}" th:style="${iterationStatus.even} ? 'font-weight:bold;'">
+                    <td th:text="${iterationStatus.count}"></td>
+                    <td th:text="${pembelian.noInvoice}"></td>
+                    <td th:text="${pembelian.total}"></td>
+                    <td th:text="${pembelian.member.namaMember}"></td>
+<!--                    <td th:text="${quantity}"></td>-->
+                    <td th:text="${pembelian.tanggalPembelian}"></td>
                     <td>
-                        <button class="btn btn-warning">Lihat</button>
-                        <button class="btn btn-warning">Hapus</button>
+                        <a class="btn btn-sm btn-warning"
+                           th:href="@{/pembelian/} + ${pembelian.idPembelian}">
+                            Lihat
+                        </a>
+                        <a class="btn btn-sm btn-warning"
+                           th:href="@{/pembelian/hapus} + ${pembelian.idPembelian}">
+                            Lihat
+                        </a>
                     </td>
                 </tr>
             </tbody>

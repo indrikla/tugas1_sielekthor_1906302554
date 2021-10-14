@@ -46,4 +46,52 @@ public class MemberModel implements Serializable {
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<PembelianModel> listPembelian;
+
+    public Long getIdMember() {
+        return idMember;
+    }
+
+    public void setIdMember(Long idMember) {
+        this.idMember = idMember;
+    }
+
+    public String getNamaMember() {
+        return namaMember;
+    }
+
+    public void setNamaMember(String namaMember) {
+        this.namaMember = namaMember;
+    }
+
+    public Integer getJenisKelamin() {
+        return jenisKelamin;
+    }
+
+    public void setJenisKelamin(Integer jenisKelamin) {
+        this.jenisKelamin = jenisKelamin;
+    }
+
+    public LocalTime getTanggalLahir() {
+        return tanggalLahir;
+    }
+
+    public void setTanggalLahir(LocalTime tanggalLahir) {
+        this.tanggalLahir = tanggalLahir;
+    }
+
+    public LocalTime getTanggalPendaftaran() {
+        return tanggalPendaftaran;
+    }
+
+    public void setTanggalPendaftaran(LocalTime tanggalPendaftaran) {
+        this.tanggalPendaftaran = tanggalPendaftaran;
+    }
+
+    public List<PembelianModel> getListPembelian() {
+        return listPembelian;
+    }
+
+    public void setListPembelian(List<PembelianModel> listPembelian) {
+        this.listPembelian = listPembelian;
+    }
 }

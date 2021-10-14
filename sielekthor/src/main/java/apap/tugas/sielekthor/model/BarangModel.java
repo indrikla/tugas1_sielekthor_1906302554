@@ -64,4 +64,76 @@ public class BarangModel implements Serializable {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "id_tipe", referencedColumnName = "id", nullable = false)
     private TipeModel tipe;
+
+    public Long getIdBarang() {
+        return idBarang;
+    }
+
+    public void setIdBarang(Long idBarang) {
+        this.idBarang = idBarang;
+    }
+
+    public String getKodeBarang() {
+        return kodeBarang;
+    }
+
+    public void setKodeBarang(String kodeBarang) {
+        this.kodeBarang = kodeBarang;
+    }
+
+    public String getNamaBarang() {
+        return namaBarang;
+    }
+
+    public void setNamaBarang(String namaBarang) {
+        this.namaBarang = namaBarang;
+    }
+
+    public String getMerkBarang() {
+        return merkBarang;
+    }
+
+    public void setMerkBarang(String merkBarang) {
+        this.merkBarang = merkBarang;
+    }
+
+    public String getDeskripsiBarang() {
+        return deskripsiBarang;
+    }
+
+    public void setDeskripsiBarang(String deskripsiBarang) {
+        this.deskripsiBarang = deskripsiBarang;
+    }
+
+    public Integer getStok() {
+        return stok;
+    }
+
+    public void setStok(Integer stok) {
+        this.stok = stok;
+    }
+
+    public Integer getJumlahGaransi() {
+        return jumlahGaransi;
+    }
+
+    public void setJumlahGaransi(Integer jumlahGaransi) {
+        this.jumlahGaransi = jumlahGaransi;
+    }
+
+    public Integer getHargaBarang() {
+        return hargaBarang;
+    }
+
+    public void setHargaBarang(Integer hargaBarang) {
+        this.hargaBarang = hargaBarang;
+    }
+
+    public TipeModel getTipe() {
+        return tipe;
+    }
+
+    public void setTipe(TipeModel tipe) {
+        this.tipe = tipe;
+    }
 }

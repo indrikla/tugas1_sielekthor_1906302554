@@ -54,4 +54,60 @@ public class PembelianModel implements Serializable {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "id_member", referencedColumnName = "id", nullable = false)
     private MemberModel member;
+
+    public Long getIdPembelian() {
+        return idPembelian;
+    }
+
+    public void setIdPembelian(Long idPembelian) {
+        this.idPembelian = idPembelian;
+    }
+
+    public String getNoInvoice() {
+        return noInvoice;
+    }
+
+    public void setNoInvoice(String noInvoice) {
+        this.noInvoice = noInvoice;
+    }
+
+    public boolean isCash() {
+        return isCash;
+    }
+
+    public void setCash(boolean cash) {
+        isCash = cash;
+    }
+
+    public String getNamaAdmin() {
+        return namaAdmin;
+    }
+
+    public void setNamaAdmin(String namaAdmin) {
+        this.namaAdmin = namaAdmin;
+    }
+
+    public Integer getTotal() {
+        return total;
+    }
+
+    public void setTotal(Integer total) {
+        this.total = total;
+    }
+
+    public LocalTime getTanggalPembelian() {
+        return tanggalPembelian;
+    }
+
+    public void setTanggalPembelian(LocalTime tanggalPembelian) {
+        this.tanggalPembelian = tanggalPembelian;
+    }
+
+    public MemberModel getMember() {
+        return member;
+    }
+
+    public void setMember(MemberModel member) {
+        this.member = member;
+    }
 }

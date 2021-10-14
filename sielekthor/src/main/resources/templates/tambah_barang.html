@@ -16,7 +16,7 @@
                 <div class="justify-content-center">
                     <h2 style="text-align: center">Form Tambah Barang</h2>
                     <div class=col-lg-6>
-                        <form>
+                        <form th:action="@{/barang/tambah}" th:object="${barang}" method="POST">
                             <label>Nama Barang: </label> <br>
                             <input required class="form-control" type="text" id="namaBForm" name="namaBForm"/>
                             <br><br>
@@ -42,19 +42,18 @@
                             <br><br>
 
                             <label>Tipe Barang: </label>
-                            <select id="tipeBForm" name="tipeBForm" required>
-                                <option disabled selected value> -- select an option -- </option>
-                                <!--            {% for supplier in supplierList %}-->
-                                <!--            <option value={{supplier.username}}>{{supplier.username}}</option>-->
-                                <!--            {% endfor %}-->
+                            <select  th:field="*{tipe}" id="tipeBForm" name="tipeBForm" required class="form-control">
+                                <option disabled selected value="0"> -- select an option -- </option>
+                                <option th:each="tipe, iterationStatus : ${listTipe}" th:value="${tipe.namaTipe}" th:text="${tipe.namaTipe}"></option>
                             </select>
                             <br><br>
 
                             <label>Harga: </label>
-                            <input type="text" id="hargaBForm" name="hargaBForm"/>
+                            <input type="text" id="hargaBForm" name="hargaBForm"required class="form-control" />
                             <br><br>
+
                             <div>
-                                <button class="btn btn-primary-outline" type="submit" name="save">Batal</button>
+                                <a th:href="@{/barang}" class="btn btn-outline-warning">Batal</a>
                                 <button class="btn btn-warning" type="submit" name="save">Simpan</button>
                             </div>
 

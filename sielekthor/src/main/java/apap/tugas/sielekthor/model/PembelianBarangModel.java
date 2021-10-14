@@ -42,4 +42,43 @@ public class PembelianBarangModel implements Serializable {
     @JoinColumn(name = "id_pembelian", referencedColumnName = "id")
     private PembelianModel pembelian;
 
+    public Long getIdPembelianBarang() {
+        return idPembelianBarang;
+    }
+
+    public void setIdPembelianBarang(Long idPembelianBarang) {
+        this.idPembelianBarang = idPembelianBarang;
+    }
+
+    public LocalTime getTanggalGaransi() {
+        return tanggalGaransi;
+    }
+
+    public void setTanggalGaransi(LocalTime tanggalGaransi) {
+        this.tanggalGaransi = tanggalGaransi;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public BarangModel getBarang() {
+        return barang;
+    }
+
+    public void setBarang(BarangModel barang) {
+        this.barang = barang;
+    }
+
+    public PembelianModel getPembelian() {
+        return pembelian;
+    }
+
+    public void setPembelian(PembelianModel pembelian) {
+        this.pembelian = pembelian;
+    }
 }

@@ -34,4 +34,36 @@ public class TipeModel implements Serializable {
 
     @OneToMany(mappedBy = "tipe", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<BarangModel> listBarang;
+
+    public Long getIdTipe() {
+        return idTipe;
+    }
+
+    public void setIdTipe(Long idTipe) {
+        this.idTipe = idTipe;
+    }
+
+    public String getNamaTipe() {
+        return namaTipe;
+    }
+
+    public void setNamaTipe(String namaTipe) {
+        this.namaTipe = namaTipe;
+    }
+
+    public String getDeskripsiTipe() {
+        return deskripsiTipe;
+    }
+
+    public void setDeskripsiTipe(String deskripsiTipe) {
+        this.deskripsiTipe = deskripsiTipe;
+    }
+
+    public List<BarangModel> getListBarang() {
+        return listBarang;
+    }
+
+    public void setListBarang(List<BarangModel> listBarang) {
+        this.listBarang = listBarang;
+    }
 }
