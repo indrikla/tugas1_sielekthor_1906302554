@@ -107,6 +107,37 @@ public class PembelianController {
         return "detail_pembelian";
     }
 
+    @PostMapping("/pembelian/hapus/{idPembelian}")
+    public String hapusPembelian(@PathVariable Long idPembelian, Model model) {
+        List<BarangModel> barangDiHapus = new ArrayList<>();
+        List<Integer> jumlahBarangDiHapus = new ArrayList<>();
+//        String barangDiHapus = "";
+//        int jumlahBarangDiHapus = 0;
+
+        List<PembelianBarangModel> listPembelianBarang = pembelianBarangService.getPembelianBarangList();
+        List<PembelianModel> listPembelian = pembelianService.getPembelianList();
+
+        PembelianModel p = pembelianService.findByIdPembelian(idPembelian);
+        for (PembelianBarangModel pb : listPembelianBarang) {
+            if (pb.getPembelian().getIdPembelian().equals(idPembelian)) {
+                BarangModel barangChange = barangService.findByIdBarang(pb.getBarang().getIdBarang());
+                barangChange.setStok(barangChange.getStok() + pb.getQuantity());
+                barangDiHapus.add(barangChange);
+                jumlahBarangDiHapus.add(pb.getQuantity());
+//                barangDiHapus = barangChange.getNamaBarang();
+//                jumlahBarangDiHapus = pb.getQuantity();
+                pembelianBarangService.deletePembelianBarang(pb);
+            }
+        }
+        model.addAttribute("noInvoice", p.getNoInvoice());
+        model.addAttribute("barangDiHapus", barangDiHapus);
+        model.addAttribute("jumlahBarangDiHapus", jumlahBarangDiHapus);
+        System.out.println(p.getNoInvoice());
+        System.out.println(barangDiHapus);
+        pembelianService.deletePembelian(p);
+        return "hapus_pembelian_sukses";
+    }
+
     @GetMapping("/filter-pembelian")
     public String cariPembelianForm(Model model) {
         List<MemberModel> listMember = memberService.getMemberList();
@@ -155,30 +186,26 @@ public class PembelianController {
             @ModelAttribute PembelianBarangModel pb,
             @ModelAttribute PembelianModel p,
             Model model) {
+        MemberModel memberBaru = memberService.findByIdMember(p.getMember().getIdMember());
+        p.setMember(memberBaru);
 
-        p.setMember(memberService.findByIdMember(p.getMember().getIdMember()));
         p.setTanggalPembelian(LocalDateTime.now());
-
-        System.out.println(p.getMember().getNamaMember());
-        System.out.println(p.getNamaAdmin());
-        System.out.println(p.getTanggalPembelian());
-        System.out.println(p.isCash());
-
         String invoice = invoiceGenerator(p.getMember().getNamaMember(), p.getNamaAdmin(), p.getTanggalPembelian(), p.isCash());
         p.setNoInvoice(invoice);
-        System.out.println(p.getNoInvoice());
 
         BarangModel b = barangService.findByIdBarang(pb.getBarang().getIdBarang());
+        b.setStok(b.getStok() - pb.getQuantity());
         pb.setBarang(b);
         pb.setQuantity(pb.getQuantity());
         LocalDate today =  LocalDate.now();
         int jumlahGaransi = b.getJumlahGaransi();
         pb.setTanggalGaransi(today.plusDays(jumlahGaransi));
-        System.out.println(pb.getTanggalGaransi());
+
         int totalHargaPembelian = b.getHargaBarang();
         p.setTotal(totalHargaPembelian * pb.getQuantity());
         pembelianService.addPembelian(p);
-        pb.setIdPembelianBarang(p.getIdPembelian());
+        pb.setPembelian(p);
+        memberBaru.getListPembelian().add(p);
         pembelianBarangService.addPembelianBarang(pb);
         model.addAttribute("idPembelianBarang", pb.getIdPembelianBarang());
         return "tambah_pembelian_barang_sukses";

@@ -43,10 +43,13 @@
                            th:href="@{/pembelian/} + ${pembelian.idPembelian}">
                             Lihat
                         </a>
-                        <a class="btn btn-sm btn-warning"
-                           th:href="@{/pembelian/hapus/} + ${pembelian.idPembelian}">
-                            Hapus
-                        </a>
+<!--                        <a class="btn btn-sm btn-warning"-->
+<!--                           th:href="@{/pembelian/hapus/} + ${pembelian.idPembelian}">-->
+<!--                            Hapus-->
+<!--                        </a>-->
+                        <form th:action="@{/pembelian/hapus/} + ${pembelian.idPembelian} " method="post">
+                            <input type="submit" class="btn btn-sm btn-warning" value="Delete" />
+                        </form>
                     </td>
                 </tr>
             </tbody>

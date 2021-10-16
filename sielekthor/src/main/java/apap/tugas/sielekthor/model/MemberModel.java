@@ -94,6 +94,7 @@ public class MemberModel implements Serializable {
     }
 
     public void setListPembelian(List<PembelianModel> listPembelian) {
+
         this.listPembelian = listPembelian;
     }
 }

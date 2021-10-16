@@ -69,9 +69,6 @@ public class BarangController {
     }
     @PostMapping("/barang/ubah")
     public String submitUbahBarang(@ModelAttribute BarangModel barang, Model model) {
-//        if (barang.getListFilm() == null) {
-//            bioskop.setListFilm(new ArrayList<>());
-//        }
         barangService.updateBarang(barang);
         model.addAttribute("kodeBarang", barang.getKodeBarang());
         return "ubah_barang_sukses";
@@ -81,9 +78,9 @@ public class BarangController {
     public String hapusBarang(@PathVariable Long idBarang, Model model) {
         BarangModel barang = barangService.findByIdBarang(idBarang);
         barangService.deleteBarang(barang);
-        model.addAttribute("tipe", barang.getTipe());
-        model.addAttribute("barang", barang);
-        return "ubah_barang";
+//        model.addAttribute("tipe", barang.getTipe());
+//        model.addAttribute("barang", barang);
+        return "barang";
     }
 
     @GetMapping("/barang/{idBarang}")
