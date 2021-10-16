@@ -12,8 +12,12 @@
 <nav th:replace="fragments/fragment :: navbar('Barang')"></nav>
 <div class="container-fluid">
     <h2 th:text="'Data member ' + ${member.namaMember} + ' berhasil diubah.'"></h2>
-<!--    <h2 th:text="'Perubahan nomor invoice ' + ${member.namaMember} + ' berhasil diubah.'"></h2>-->
+    <h2 th:text="'Invoice yang terikat dengan ' + ${member.namaMember} + ' juga berhasil diupdate: '"></h2>
+    <ul th:each="invoice, iterationStatus : ${invoices}">
+        <li th:text="${invoicesLama[iterationStatus.index]} + 'menjadi ' + ${invoice}" ></li>
+    </ul>
     <a th:href="@{/member}" class="btn btn-sm btn-warning">Kembali</a>
 </div>
+
 </body>
 </html>
