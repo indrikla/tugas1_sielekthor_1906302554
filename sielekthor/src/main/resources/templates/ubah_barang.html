@@ -17,6 +17,8 @@
                     <h2 style="text-align: center">Ubah Barang</h2>
                     <div class=col-lg-6>
                         <form th:action="@{/barang/ubah}" th:object="${barang}" method="POST">
+                            <input type="hidden" th:field="*{idBarang}"/>
+
                             <label>Nama Barang: </label>
                             <input th:value="*{namaBarang}" type="text" name="namaBarang" class="form-control">
                             <br>

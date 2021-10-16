@@ -10,10 +10,16 @@
 
 <body>
 <nav th:replace="fragments/fragment :: navbar('Barang')"></nav>
+
 <div class="d-flex justify-content-center">
+
+    <br>
     <div class="m-4">
         <h2 style="text-align: center">Daftar Pembelian</h2>
-
+        <div>
+            <a th:href="@{/pembelian/tambah}" class="btn btn-warning">+ Tambah Pembelian</a>
+            <a th:href="@{/filter-pembelian}" class="btn btn-outline-warning">Cari Pembelian</a>
+        </div>
         <table class="table">
             <thead style="text-align: center">
                 <th>No</th>

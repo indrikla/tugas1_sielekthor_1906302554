@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -26,9 +27,9 @@ public class PembelianBarangModel implements Serializable {
     private Long idPembelianBarang;
 
     @NotNull
-    @Column(name = "tanggal_garansi", nullable = false)
-    @DateTimeFormat(pattern = "YYYY-MM-dd")
-    private LocalTime tanggalGaransi;
+    @Column(name="tanggal_garansi", nullable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate tanggalGaransi;
 
     @NotNull
     @Column(name = "quantity", nullable = false)
@@ -50,11 +51,11 @@ public class PembelianBarangModel implements Serializable {
         this.idPembelianBarang = idPembelianBarang;
     }
 
-    public LocalTime getTanggalGaransi() {
+    public LocalDate getTanggalGaransi() {
         return tanggalGaransi;
     }
 
-    public void setTanggalGaransi(LocalTime tanggalGaransi) {
+    public void setTanggalGaransi(LocalDate tanggalGaransi) {
         this.tanggalGaransi = tanggalGaransi;
     }
 

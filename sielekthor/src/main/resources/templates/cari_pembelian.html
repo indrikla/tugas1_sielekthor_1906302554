@@ -14,7 +14,7 @@
     <div class="card m-4 p-4">
         <div class="card-body">
             <div class="justify-content-center">
-                <h2 style="text-align: center">Cari Member</h2>
+                <h2 style="text-align: center">Cari Pembelian</h2>
                 <div class=col-lg-6>
                     <form th:action="@{/filter-pembelian/cari/pembelian}" method="GET">
                         <label>Member: </label>
@@ -32,10 +32,6 @@
 
                           <input required type="radio" name="tipePembayaran" id="soldout" value="false">
                           <label>Cicil</label><br>
-<!--                        <select name="pembayaran" class="form-control">-->
-<!--                            <option th:value="0" th:text="Tunai"></option>-->
-<!--                            <option th:value="1" th:text="Cicil"></option>-->
-<!--                        </select>-->
                         <br>
 
                         <div>

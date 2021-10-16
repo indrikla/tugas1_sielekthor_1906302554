@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Form Tambah Pembelian </title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+    <nav th:replace="fragments/fragment :: navbar('Home')"></nav>
+    <div class="container">
+        <div class="card m-4 p-4">
+            <div class="card-body">
+                <div class="justify-content-center">
+                    <h2 style="text-align: center">Form Tambah Pembelian</h2>
+                    <div class=col-lg-6>
+                        <form th:action="@{/pembelian/tambah}" th:object="${pembelian}" method="POST">
+                            <label>Nama Admin: </label>
+                            <input required class="form-control" type="text" th:field="*{namaAdmin}" name="namaAdmin">
+                            <br>
+
+                            <label>Pembeli: </label>
+                            <select th:field="*{member.idMember}" name="idMember" required class="form-control">
+                                <option disabled selected value="0"> -- select an option -- </option>
+                                <option th:each="member, iterationStatus : ${listMember}" th:value="${member.idMember}" th:text="${member.namaMember}"></option>
+                            </select>
+                            <br>
+
+                            <div>
+                                <label>Metode Pembayaran: </label>
+                            </div>
+<!--                            <input required type="radio" name="tipePembayaran" th:field="*{isCash}" th:value="true" th:text="Tunai"></input>-->
+<!--                            <input required type="radio" name="tipePembayaran" th:field="*{isCash}" th:value="false" th:text="Cicil"></input>-->
+<!--                            <br>-->
+                              <input required type="radio" name="isCash" id="available" value="true">
+                              <label>Tunai</label><br>
+
+                              <input required type="radio" name="isCash" id="soldout" value="false">
+                              <label>Cicil</label><br>
+                                <br>
+
+                            <h4>Daftar Barang</h4>
+                            <div th:object="${pb}">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <label>Nama Barang: </label>
+                                        <select th:field="*{barang.idBarang}" name="namaBarang" required class="form-control">
+                                            <option disabled selected value="0"> -- select an option -- </option>
+                                            <option th:each="barang, iterationStatus : ${listBarang}" th:value="${barang.idBarang}" th:text="${barang.namaBarang}"></option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <label>Qty: </label>
+                                        <input required name="quantity" class="form-control" type="number" th:field="*{quantity}">
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <a th:href="@{/}" class="btn btn-danger">Hapus</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                                <div>
+                                    <a th:href="@{/}" class="btn btn-primary">+ Tambah Barang</a>
+                                </div>
+                            </div>
+                            <div>
+                                <a th:href="@{/pembelian}" class="btn btn-outline-warning">Batal</a>
+                                <button class="btn btn-warning" type="submit" name="save">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+            <div>
+                <button th:href="@{/}" class="btn btn-warning">Kembali</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
