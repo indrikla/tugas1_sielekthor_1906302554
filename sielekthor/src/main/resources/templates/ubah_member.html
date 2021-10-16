@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Form Tambah Pembelian </title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+    <nav th:replace="fragments/fragment :: navbar('Home')"></nav>
+    <div class="container">
+        <div class="card m-4 p-4">
+            <div class="card-body">
+                <div class="justify-content-center">
+                    <h2 style="text-align: center">Form Ubah Member</h2>
+                    <div class=col-lg-6>
+                        <form th:action="@{/member/ubah}" th:object="${member}" method="POST">
+                            <input type="hidden" th:field="*{idMember}"/>
+
+                            <label>Nama: </label>
+                            <input th:value="*{namaMember}" required class="form-control" type="text" name="namaMember">
+                            <br>
+
+                            <label>Tanggal Lahir: </label>
+                            <input th:value="*{tanggalLahir}" required class="form-control" type="date" name="tanggalLahir">
+                            <br>
+
+                            <label>Tanggal Pendaftaran: </label>
+                            <input th:value="*{tanggalPendaftaran}" required class="form-control" type="datetime-local" name="tanggalPendaftaran">
+                            <br>
+
+                            <div>
+                                <label>Jenis Kelamin: </label>
+                            </div>
+                              <select readonly th:field="*{jenisKelamin}" name="jenisKelamin" required class="form-control">
+                                    <option th:if="${member.jenisKelamin} == 0" value="0">Laki-Laki</option>
+                                    <option th:if="${member.jenisKelamin} == 1" value="1">Perempuan</option>
+                                </select>
+                            <br>
+
+                            <div>
+                                <a th:href="@{/member}" class="btn btn-outline-warning">Batal</a>
+                                <button class="btn btn-warning" type="submit" name="save">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
