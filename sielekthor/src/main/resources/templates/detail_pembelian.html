@@ -10,58 +10,73 @@
 
 <body>
     <nav th:replace="fragments/fragment :: navbar('Home')"></nav>
-    <div class="d-flex justify-content-center">
-        <div class="container col-lg-12">
-            <h1 class="display-4">Detail Pembelian</h1>
-            <hr class="my-4">
-            <div class=col-lg-6>
-
-                <label>Nama Barang: </label>
-
-                <label>Kode Barang: </label>
-
-                <label>Merk Barang: </label>
-
-                <label>Stok Barang: </label>
-
-                <label>Garansi Barang: </label>
-
-                <label>Deskripsi Barang: </label>
-
-                <label>Tipe Barang: </label>
-
-                <label>Harga: </label>
-                <button th:href="@{/}">Kembali</button>
+    <div class="container">
+        <div class="card m-4 p-4">
+            <div class="card-body">
+                <div class="justify-content-center">
+                    <h2 style="text-align: center">Detail Pembelian</h2>
+                    <div class=col-lg-6>
+                        <p th:text="'No Invoice : ' + ${pembelian.noInvoice}"></p>
+                        <p th:text="'Total Harga : ' + ${pembelian.total}"></p>
+                        <p th:text="'Member : ' + ${pembelian.member.namaMember}"></p>
+                        <p th:text="'Jumlah Barang : '"></p>
+                        <p th:text="'Tanggal Pembelian : ' + ${pembelian.tanggalPembelian}"></p>
+                        <p th:text="'Nama Admin : ' + ${pembelian.namaAdmin}"></p>
+                        <p th:if="${pembelian.isCash} == true">Metode Pembayaran : Cash</p>
+                        <p th:if="${pembelian.isCash} == false">Metode Pembayaran : Ga Cash</p>
+                        <div>
+                            <a th:href="@{/pembelian/hapus/} + ${pembelian.idPembelian}" class="btn btn-sm btn-danger">Hapus</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <h1 class="display-4">Detail Pembelian</h1>
-        <div>
-            <table>
-                <tr>
-                    <th>No</th>
-                    <th>Nama</th>
-                    <th>Merk</th>
-                    <th>Tipe</th>
-                    <th>Tanggal Garansi</th>
-                    <th>Harga</th>
-                    <th>Kty</th>
-                    <th>Total</th>
-                </tr>
-                <tr>
-                    <td>a</td>
-                    <td>a</td>
-                    <td>a</td>
-                    <td>a</td>
-                    <td>a</td>
-                    <td>a</td>
-                    <td>a</td>
-                    <td>a</td>
-                </tr>
-            </table>
+    </div>
+    <div class="container">
+        <div class="card m-4 p-4">
+            <div class="card-body">
+                <div class="justify-content-center">
+                    <h2 style="text-align: center">Daftar Barang</h2>
+                    <div class=col-lg-6>
+                        <div>
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama</th>
+                                    <th>Merk</th>
+                                    <th>Tipe</th>
+                                    <th>Tanggal Garansi</th>
+                                    <th>Harga</th>
+                                    <th>qty</th>
+                                    <th>Total</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="pb, iterationStatus : ${listPembelianBarang}">
+                                    <td th:text="${iterationStatus.count}"></td>
+                                    <td th:text="${pb.barang.namaBarang}"></td>
+                                    <td th:text="${pb.barang.merkBarang}"></td>
+                                    <td th:text="${pb.barang.tipe.namaTipe}"></td>
+                                    <td th:text="${pb.tanggalGaransi}"></td>
+<!--                                    <div th:with="result=${pb.pembelian.total * obj.aa}">-->
+<!--                                        <span th:text="${result}"></span>-->
+<!--                                    </div>-->
+                                    <td th:text="${pb.barang.hargaBarang}"></td>
+                                    <td th:text="${pb.quantity}"></td>
+                                    <td th:text="${pb.pembelian.total}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div>
+                            <a th:href="@{/pembelian}" class="btn btn-sm btn-warning">Kembali</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div>
-            <button th:href="@{/}">Kembali</button>
-        </div>
+    </div>
     </div>
 </body>
 

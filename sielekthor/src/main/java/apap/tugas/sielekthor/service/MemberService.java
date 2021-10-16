@@ -8,4 +8,5 @@ public interface MemberService {
 //    void deleteBarang(BarangModel barang);
     void updateMember(MemberModel member);
     List<MemberModel> getMemberList();
+    MemberModel findByIdMember(Long idMember);
 }

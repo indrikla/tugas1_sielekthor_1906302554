@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cari Pembelian </title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+<nav th:replace="fragments/fragment :: navbar('Home')"></nav>
+<div class="container">
+    <div class="card m-4 p-4">
+        <div class="card-body">
+            <div class="justify-content-center">
+                <h2 style="text-align: center">Cari Member</h2>
+                <div class=col-lg-6>
+                    <form th:action="@{/filter-pembelian/cari/pembelian}" method="GET">
+                        <label>Member: </label>
+                        <select name="idMember" required class="form-control">
+                            <option disabled selected value="0"> -- select an option -- </option>
+                            <option th:each="member, iterationStatus : ${listMember}" th:value="${member.idMember}" th:text="${member.namaMember}"></option>
+                        </select>
+                        <br><br>
+
+                        <div>
+                            <label>Pembayaran: </label>
+                        </div>
+                          <input required type="radio" name="tipePembayaran" id="available" value="true">
+                          <label>Tunai</label><br>
+
+                          <input required type="radio" name="tipePembayaran" id="soldout" value="false">
+                          <label>Cicil</label><br>
+                        <br>
+
+                        <div>
+                            <button class="btn btn-warning" type="submit" name="save">Cari</button>
+                            <a th:href="@{/}" class="btn btn-outline-warning">Kembali</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <table class="table">
+        <thead style="text-align: center">
+        <th>No</th>
+        <th>No Invoice</th>
+        <th>Total Harga</th>
+        <th>Member</th>
+        <th>Jumlah Barang</th>
+        <th>Tanggal Pembelian</th>
+        <th>Aksi</th>
+        </thead>
+        <tbody>
+        <tr th:each="pembelian, iterationStatus : ${listPembelian}" th:style="${iterationStatus.even} ? 'font-weight:bold;'">
+            <td th:text="${iterationStatus.count}"></td>
+            <td th:text="${pembelian.noInvoice}"></td>
+            <td th:text="${pembelian.total}"></td>
+            <td th:text="${pembelian.member.namaMember}"></td>
+            <td th:text="${pembelian.total}"></td>
+            <td th:text="${pembelian.tanggalPembelian}"></td>
+            <td>
+                <a class="btn btn-sm btn-warning"
+                   th:href="@{/pembelian/} + ${pembelian.idPembelian}">
+                    Lihat
+                </a>
+                <a class="btn btn-sm btn-warning"
+                   th:href="@{/pembelian/hapus/} + ${pembelian.idPembelian}">
+                    Hapus
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
+

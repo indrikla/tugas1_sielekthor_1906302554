@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cari Pembelian </title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+<nav th:replace="fragments/fragment :: navbar('Home')"></nav>
+<div class="container">
+    <div class="card m-4 p-4">
+        <div class="card-body">
+            <div class="justify-content-center">
+                <h2 style="text-align: center">Cari Member</h2>
+                <div class=col-lg-6>
+                    <form th:action="@{/barang/cari/tipe}" method="GET">
+                        <label>Tipe: </label>
+                        <select name="idTipe" required class="form-control">
+                            <option disabled selected value="0"> -- select an option -- </option>
+                            <option th:each="tipe, iterationStatus : ${listTipe}" th:value="${tipe.idTipe}" th:text="${tipe.namaTipe}"></option>
+                        </select>
+                        <br><br>
+
+                        <div>
+                            <label>Stok: </label>
+                        </div>
+                          <input required type="radio" name="stok" id="available" value="true">
+                          <label>Available</label><br>
+
+                          <input required type="radio" name="stok" id="soldout" value="false">
+                          <label>Sold Out</label><br>
+                        <br>
+
+                        <div>
+                            <button class="btn btn-warning" type="submit" name="save">Cari</button>
+                            <a th:href="@{/}" class="btn btn-outline-warning">Kembali</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+

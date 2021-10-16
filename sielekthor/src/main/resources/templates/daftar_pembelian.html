@@ -30,7 +30,7 @@
                     <td th:text="${pembelian.noInvoice}"></td>
                     <td th:text="${pembelian.total}"></td>
                     <td th:text="${pembelian.member.namaMember}"></td>
-<!--                    <td th:text="${quantity}"></td>-->
+                    <td th:text="${pembelian.total}"></td>
                     <td th:text="${pembelian.tanggalPembelian}"></td>
                     <td>
                         <a class="btn btn-sm btn-warning"
@@ -38,8 +38,8 @@
                             Lihat
                         </a>
                         <a class="btn btn-sm btn-warning"
-                           th:href="@{/pembelian/hapus} + ${pembelian.idPembelian}">
-                            Lihat
+                           th:href="@{/pembelian/hapus/} + ${pembelian.idPembelian}">
+                            Hapus
                         </a>
                     </td>
                 </tr>

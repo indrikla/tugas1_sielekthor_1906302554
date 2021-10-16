@@ -12,6 +12,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -47,8 +48,8 @@ public class PembelianModel implements Serializable {
 
     @NotNull
     @Column(name = "tanggal_pembelian", nullable = false)
-    @DateTimeFormat(pattern = "YYYY-MM-dd")
-    private LocalTime tanggalPembelian;
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    private LocalDateTime tanggalPembelian;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -95,11 +96,11 @@ public class PembelianModel implements Serializable {
         this.total = total;
     }
 
-    public LocalTime getTanggalPembelian() {
+    public LocalDateTime getTanggalPembelian() {
         return tanggalPembelian;
     }
 
-    public void setTanggalPembelian(LocalTime tanggalPembelian) {
+    public void setTanggalPembelian(LocalDateTime tanggalPembelian) {
         this.tanggalPembelian = tanggalPembelian;
     }
 

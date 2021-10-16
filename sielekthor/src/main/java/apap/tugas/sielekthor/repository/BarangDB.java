@@ -8,6 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface BarangDB extends JpaRepository<BarangModel, Long> {
-//    Optional<BarangModel> findByIdBarang(Long id);
+    Optional<BarangModel> findByIdBarang(Long idBarang);
 //    List<BarangModel> findAllBarang();
 }

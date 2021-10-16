@@ -8,6 +8,7 @@ public interface BarangService {
     void deleteBarang(BarangModel barang);
     void updateBarang(BarangModel barang);
     List<BarangModel> getBarangList();
+    BarangModel findByIdBarang(Long idBarang);
 //    String checkError(BioskopModel bioskop);
 //    BioskopModel getBioskopByNoBioskop(Long noBioskop);
 }

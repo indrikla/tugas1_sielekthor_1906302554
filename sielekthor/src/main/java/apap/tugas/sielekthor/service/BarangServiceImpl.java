@@ -39,4 +39,13 @@ public class BarangServiceImpl implements BarangService {
     public List<BarangModel> getBarangList() {
         return barangDB.findAll();
     }
+
+    @Override
+    public BarangModel findByIdBarang(Long idBarang) {
+        Optional<BarangModel> barang = barangDB.findByIdBarang(idBarang);
+        if (barang.isPresent()) {
+            return barang.get();
+        }
+        return null;
+    }
 }

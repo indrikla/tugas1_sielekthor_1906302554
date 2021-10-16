@@ -10,6 +10,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -35,14 +37,14 @@ public class MemberModel implements Serializable {
     private Integer jenisKelamin;
 
     @NotNull
-    @Column(name = "tanggal_lahir", nullable = false)
-    @DateTimeFormat(pattern = "YYYY-MM-dd")
-    private LocalTime tanggalLahir;
+    @Column(nullable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate tanggalLahir;
 
     @NotNull
     @Column(name = "tanggal_pendaftaran", nullable = false)
-    @DateTimeFormat(pattern = "YYYY-MM-dd")
-    private LocalTime tanggalPendaftaran;
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    private LocalDateTime tanggalPendaftaran;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<PembelianModel> listPembelian;
@@ -71,19 +73,19 @@ public class MemberModel implements Serializable {
         this.jenisKelamin = jenisKelamin;
     }
 
-    public LocalTime getTanggalLahir() {
+    public LocalDate getTanggalLahir() {
         return tanggalLahir;
     }
 
-    public void setTanggalLahir(LocalTime tanggalLahir) {
+    public void setTanggalLahir(LocalDate tanggalLahir) {
         this.tanggalLahir = tanggalLahir;
     }
 
-    public LocalTime getTanggalPendaftaran() {
+    public LocalDateTime getTanggalPendaftaran() {
         return tanggalPendaftaran;
     }
 
-    public void setTanggalPendaftaran(LocalTime tanggalPendaftaran) {
+    public void setTanggalPendaftaran(LocalDateTime tanggalPendaftaran) {
         this.tanggalPendaftaran = tanggalPendaftaran;
     }
 

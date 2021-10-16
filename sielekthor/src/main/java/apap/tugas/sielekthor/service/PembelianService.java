@@ -1,7 +1,5 @@
 package apap.tugas.sielekthor.service;
-import apap.tugas.sielekthor.model.MemberModel;
 import apap.tugas.sielekthor.model.PembelianModel;
-import apap.tugas.sielekthor.model.TipeModel;
 
 import java.util.List;
 
@@ -10,5 +8,6 @@ public interface PembelianService {
     void deletePembelian(PembelianModel pembelian);
     void updatePembelian(PembelianModel pembelian);
     List<PembelianModel> getPembelianList();
-    PembelianModel findPembelianByMemberPembayaran(MemberModel member, String pembayaran);
+    PembelianModel findByIdPembelian(Long idPembelian);
+//    PembelianModel findByMemberAndCash(MemberModel member, Boolean cash);
 }

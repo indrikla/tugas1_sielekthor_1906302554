@@ -10,42 +10,54 @@
 
 <body>
     <nav th:replace="fragments/fragment :: navbar('Home')"></nav>
-    <div class="d-flex justify-content-center">
-        <div class="container col-lg-12">
-            <h1 class="display-4">Ubah Barang</h1>
-            <hr class="my-4">
-            <div class=col-lg-6>
+    <div class="container">
+        <div class="card m-4 p-4">
+            <div class="card-body">
+                <div class="justify-content-center">
+                    <h2 style="text-align: center">Ubah Barang</h2>
+                    <div class=col-lg-6>
+                        <form th:action="@{/barang/ubah}" th:object="${barang}" method="POST">
+                            <label>Nama Barang: </label>
+                            <input th:value="*{namaBarang}" type="text" name="namaBarang" class="form-control">
+                            <br>
 
+                            <label>Kode Barang: </label>
+                            <input readonly th:value="*{kodeBarang}" name="kodeBarang" type="text" class="form-control">
+                            <br>
 
-                <label>Nama Barang: </label>
-                <input type="text" id="namaBForm" name="namaBForm">
+                            <label>Merk Barang: </label>
+                            <input readonly th:value="*{merkBarang}" name="merkBarang" type="text" class="form-control">
+                            <br>
 
-                <label>Kode Barang: </label>
-                <input type="text" id="kodeBForm" name="kodeBForm" disabled>
+                            <label>Stok Barang: </label>
+                            <input th:value="*{stok}"type="text" id="stokBForm" name="stok"  class="form-control">
+                            <br>
 
-                <label>Merk Barang: </label>
-                <input type="text" id="merkBForm" name="merkBForm" disabled>
+                            <label>Garansi Barang: </label>
+                            <input th:value="*{jumlahGaransi}"type="text" id="garansiBForm" name="jumlahGaransi" class="form-control">
+                            <br>
 
-                <label>Stok Barang: </label>
-                <input type="text" id="stokBForm" name="stokBForm" >
+                            <label>Deskripsi Barang: </label>
+                            <input th:value="*{deskripsiBarang}"type="text" id="deskripsiBForm" name="deskripsiBarang" class="form-control">
+                            <br>
 
-                <label>Garansi Barang: </label>
-                <input type="text" id="garansiBForm" name="garansiBForm" >
+                            <label>Tipe Barang: </label>
+                            <select readonly th:field="*{tipe}" name="tipe" required class="form-control">
+                                <option th:value="${tipe.idTipe}" th:text="${tipe.namaTipe}"></option>
+                            </select>
 
-                <label>Deskripsi Barang: </label>
-                <input type="text" id="deskripsiBForm" name="deskripsiBForm" >
+                            <label>Harga: </label>
+                            <input th:value="*{hargaBarang}"type="text" id="hargaBForm" name="hargaBarang" class="form-control">
+                            <br>
 
-                <label>Tipe Barang: </label>
-                <select id="tipeBForm" name="tipeBForm" disabled>
-                    <option disabled selected value> -- select an option -- </option>
-                    <!--            {% for supplier in supplierList %}-->
-                    <!--            <option value={{supplier.username}}>{{supplier.username}}</option>-->
-                    <!--            {% endfor %}-->
-                </select>
+                            <div>
+                                <a th:href="@{/barang}" class="btn btn-outline-warning">Batal</a>
+                                <button class="btn btn-warning" type="submit" name="save">Simpan</button>
+                            </div>
 
-                <label>Harga: </label>
-                <input type="text" id="hargaBForm" name="hargaBForm">
-
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -10,33 +10,25 @@
 
 <body>
     <nav th:replace="fragments/fragment :: navbar('Home')"></nav>
-    <div class="d-flex justify-content-center">
-        <div class="container col-lg-12">
-            <h1 class="display-4">Detail Barang</h1>
-            <hr class="my-4">
-            <div class=col-lg-6>
+    <div class="container">
+        <div class="card m-4 p-4">
+            <div class="card-body">
+                <div class="justify-content-center">
+                    <h2 style="text-align: center">Detail Barang</h2>
+                    <div class=col-lg-6>
+                        <p th:text="'Nama Barang : ' + ${barang.namaBarang}"></p>
+                        <p th:text="'Kode Barang : ' + ${barang.kodeBarang}"></p>
+                        <p th:text="'Merk Barang : ' + ${barang.merkBarang}"></p>
+                        <p th:text="'Stok Barang : ' + ${barang.stok}"></p>
+                        <p th:text="'Garansi Barang : ' + ${barang.jumlahGaransi}"></p>
+                        <p th:text="'Deskripsi Barang : ' + ${barang.deskripsiBarang}"></p>
+                        <p th:text="'Tipe Barang : ' + ${barang.tipe.namaTipe}"></p>
+                        <p th:text="'Harga Barang : ' + ${barang.hargaBarang}"></p>
 
-                <label>Nama Barang: </label>
-
-                <label>Kode Barang: </label>
-
-                <label>Merk Barang: </label>
-
-                <label>Stok Barang: </label>
-
-                <label>Garansi Barang: </label>
-
-                <label>Deskripsi Barang: </label>
-
-                <label>Tipe Barang: </label>
-
-                <label>Harga: </label>
-                <button th:href="@{/}">Kembali</button>
+                        <a th:href="@{/barang}" class="btn btn-sm btn-warning">Kembali</a>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div>
-            <button th:href="@{/}" class="btn btn-warning">Simpan</button>
-            <button th:href="@{/}" class="btn btn-warning-outline">Batal</button>
         </div>
     </div>
 </body>

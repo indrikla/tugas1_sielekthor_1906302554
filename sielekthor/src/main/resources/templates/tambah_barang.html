@@ -18,38 +18,38 @@
                     <div class=col-lg-6>
                         <form th:action="@{/barang/tambah}" th:object="${barang}" method="POST">
                             <label>Nama Barang: </label> <br>
-                            <input required class="form-control" type="text" id="namaBForm" name="namaBForm"/>
+                            <input required class="form-control" type="text" name="namaBarang"/>
                             <br><br>
 
                             <label>Kode Barang: </label>
-                            <input required class="form-control" type="text" id="kodeBForm" name="kodeBForm"/>
+                            <input required class="form-control" type="text" name="kodeBarang"/>
                             <br><br>
 
                             <label>Merk Barang: </label>
-                            <input required class="form-control" type="text" id="merkBForm" name="merkBForm" />
+                            <input required class="form-control" type="text" name="merkBarang" />
                             <br><br>
 
                             <label>Stok Barang: </label>
-                            <input required class="form-control" type="text" id="stokBForm" name="stokBForm" />
+                            <input required class="form-control" type="text" name="stok" />
                             <br><br>
 
                             <label>Garansi Barang: </label>
-                            <input required class="form-control" type="text" id="garansiBForm" name="garansiBForm" />
+                            <input required class="form-control" type="text" name="jumlahGaransi" />
                             <br><br>
 
                             <label>Deskripsi Barang: </label>
-                            <input required class="form-control" type="text" id="deskripsiBForm" name="deskripsiBForm" />
+                            <input required class="form-control" type="text" name="deskripsiBarang" />
                             <br><br>
 
                             <label>Tipe Barang: </label>
-                            <select  th:field="*{tipe}" id="tipeBForm" name="tipeBForm" required class="form-control">
+                            <select  th:field="*{tipe}" name="tipe" required class="form-control">
                                 <option disabled selected value="0"> -- select an option -- </option>
-                                <option th:each="tipe, iterationStatus : ${listTipe}" th:value="${tipe.namaTipe}" th:text="${tipe.namaTipe}"></option>
+                                <option th:each="tipe, iterationStatus : ${listTipe}" th:value="${tipe.idTipe}" th:text="${tipe.namaTipe}"></option>
                             </select>
                             <br><br>
 
                             <label>Harga: </label>
-                            <input type="text" id="hargaBForm" name="hargaBForm"required class="form-control" />
+                            <input type="text" name="hargaBarang" required class="form-control" />
                             <br><br>
 
                             <div>
@@ -65,42 +65,3 @@
     </div>
 </body>
 </html>
-
-<!--<div class="container">-->
-<!--    <div class="card m-4 p-4">-->
-<!--        <div class="card-body">-->
-<!--            <div class="justify-content-center">-->
-<!--                <h2>Tambah Bioskop</h2>-->
-<!--                <br>-->
-<!--                <form th:action="@{/bioskop/add}" th:object="${bioskop}" method="POST">-->
-<!--                    <label>Nama Barang: </label> <br>-->
-<!--                    <input required class="form-control" type="text" id="namaBForm" name="namaBForm"/>-->
-<!--                    <br><br>-->
-
-<!--                    Alamat Bioskop: <br>-->
-<!--                    <input required class="form-control" th:value="*{alamatBioskop}" type="text"-->
-<!--                           name="alamatBioskop" />-->
-<!--                    <br><br>-->
-
-<!--                    Jumlah Studio : <br>-->
-<!--                    <input required min="0" class="form-control" th:value="*{jumlahStudio}" type="number"-->
-<!--                           name="jumlahStudio" />-->
-<!--                    <br><br>-->
-
-<!--                    Waktu Buka : <br>-->
-<!--                    <input required class="form-control" th:value="*{waktuBuka}" type="time" name="waktuBuka" />-->
-<!--                    <br><br>-->
-
-<!--                    Waktu Tutup : <br>-->
-<!--                    <input required class="form-control" th:value="*{waktuTutup}" type="time" name="waktuTutup" />-->
-<!--                    <br><br>-->
-
-
-
-<!--                    <button class="btn btn-primary" type="submit" name="save">Submit</button>-->
-<!--                    <a class="btn btn-primary" href="/">Home</a>-->
-<!--                </form>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
